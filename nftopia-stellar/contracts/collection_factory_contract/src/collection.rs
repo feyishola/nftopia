@@ -206,8 +206,8 @@ impl Collection {
         to: &Address,
         token_ids: Vec<u32>,
     ) -> Result<(), Error> {
-        for token_id in token_ids.iter() {
-            Self::transfer(env, collection_id, from, to, *token_id)?;
+        for &token_id in token_ids.iter() {
+            Self::transfer(env, collection_id, from, to, token_id)?;
         }
         Ok(())
     }
